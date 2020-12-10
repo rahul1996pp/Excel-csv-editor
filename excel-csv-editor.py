@@ -2,18 +2,21 @@ import pandas as pd
 import numpy as np
 import os
 def folder():
-    folder = input("[+] enter excel file or folder:-")
-    if folder.endswith(("csv","xlsx")):
-        print('[#] your file is :',folder)
-        name,extension = folder.split(".")
-        csvsort(name,extension,folder)
-    else:
-        folder_items = os.listdir(folder)
-        print("[#] Total files in folder are :-",len(folder_items))
-        for file in folder_items:
-            name,extension = file.split(".")
-            file_location = os.path.join(folder,file)
-            csvsort(name,extension,file_location)
+    try:
+        folder = input("[+] enter excel folder:-")
+        if folder.endswith(("csv","xlsx")):
+            print('[#] your file is :',folder)
+            name,extension = folder.split(".")
+            csvsort(name,extension,folder)
+        else:
+            folder_items = os.listdir(folder)
+            print("[#] Total files in folder are :-",len(folder_items))
+            for file in folder_items:
+                name,extension = file.split(".")
+                file_location = os.path.join(folder,file)
+                csvsort(name,extension,file_location)
+    except:
+        print("[-] something went wrong")
 def csvsort(name,extension,file_location):
     try:
         if extension == "xlsx":
