@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import os
 def folder():
-    folder = input("[+] enter excel folder:-")
+    folder = input("[+] enter excel file or folder:-")
     if folder.endswith(("csv","xlsx")):
         print('[#] your file is :',folder)
         name,extension = folder.split(".")
