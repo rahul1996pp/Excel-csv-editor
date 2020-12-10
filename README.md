@@ -15,3 +15,5 @@ The code uses **PANDAS** python module to work
 
 How to run script:
  `python excel-csv-editor.py`
+
+**Buy me a coffee : [click here](https://www.paypal.me/RahulPujari "Pay")**
