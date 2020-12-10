@@ -3,25 +3,30 @@ import numpy as np
 import os
 def folder():
     folder = input("[+] enter excel folder:-")
-    folder_items = os.listdir(folder)
-    print("[#] Total files in folder are :-",len(folder_items))
-    for file in folder_items:
-        name,extension = file.split(".")
-        file_location = os.path.join(folder,file)
-        csvsort(name,extension,file_location)
+    if folder.endswith(("csv","xlsx")):
+        print('[#] your file is :',folder)
+        name,extension = folder.split(".")
+        csvsort(name,extension,folder)
+    else:
+        folder_items = os.listdir(folder)
+        print("[#] Total files in folder are :-",len(folder_items))
+        for file in folder_items:
+            name,extension = file.split(".")
+            file_location = os.path.join(folder,file)
+            csvsort(name,extension,file_location)
 def csvsort(name,extension,file_location):
     try:
         if extension == "xlsx":
             print("[+] processing xlsx file:- ",name)
             excel_read = pd.read_excel(file_location, usecols=cols)
             clear_text = excel_read.dropna()
-            file_output = name + '.xlsx'
+            file_output = name +"_new"+ '.xlsx'
             clear_text.to_excel(file_output)
         elif extension == "csv":
             print("[+] processing csv file:- ",name)
             csv_read = pd.read_csv(file_location, usecols=cols, low_memory=False)
             clear_text = csv_read.dropna()
-            file_output = name + '.csv'
+            file_output = name +"_new"+ '.csv'
             clear_text.to_csv(file_output)
     except:
         print("[-] file is invalid")        
